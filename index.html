@@ -11,8 +11,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css" />
+		<script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css">
 		<style>
 			#panorama {
 				width: 100%;
@@ -43,28 +43,30 @@
 						<!-- Panorama 360 -->
 						<div id="panorama"></div>
 						<script>
-							var viewer = pannellum.viewer('panorama', {
-								"type": "equirectangular",
-								"panorama": "",
-								"autoLoad": true,
-								"showZoomCtrl": true
-							});
+							let viewer;
 
 							function showPanorama(imagePath) {
 								document.getElementById('panorama').style.display = 'block';
-								viewer.loadScene({
-									"type": "equirectangular",
-									"panorama": imagePath
-								});
+
+								if (viewer) {
+									viewer.setPanorama(imagePath);
+								} else {
+									viewer = new PhotoSphereViewer.Viewer({
+										container: document.getElementById('panorama'),
+										panorama: imagePath,
+										loadingImg: 'images/loading.gif',
+										navbar: true
+									});
+								}
 							}
 						</script>
 
-						<article class="thumb" onclick="showPanorama('images/thumbs/01.png')">
+						<article class="thumb" onclick="showPanorama('images/panorama1.jpg')">
 							<a href="#" class="image"><img src="images/thumbs/01.png" alt="" /></a>
 							<h2>Resto and Bar</h2>
 							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
 						</article>
-						<article class="thumb" onclick="showPanorama('images/thumbs/02.jpg')">
+						<article class="thumb" onclick="showPanorama('images/panorama2.jpg')">
 							<a href="#" class="image"><img src="images/thumbs/02.jpg" alt="" /></a>
 							<h2>Rumah</h2>
 							<p>Panorama rumah dari Google.</p>
