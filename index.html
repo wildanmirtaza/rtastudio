@@ -11,16 +11,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css">
-		<style>
-			#panorama {
-				width: 100%;
-				height: 500px;
-				margin-bottom: 20px;
-				display: none;
-			}
-		</style>
 	</head>
 	<body class="is-preload">
 
@@ -39,71 +29,67 @@
 
 				<!-- Main -->
 					<div id="main">
-
-						<!-- Panorama 360 -->
-						<div id="panorama"></div>
-						<script>
-							let viewer;
-
-							function showPanorama(imagePath) {
-								document.getElementById('panorama').style.display = 'block';
-
-								if (viewer) {
-									viewer.setPanorama(imagePath);
-								} else {
-									viewer = new PhotoSphereViewer.Viewer({
-										container: document.getElementById('panorama'),
-										panorama: imagePath,
-										loadingImg: 'images/loading.gif',
-										navbar: true
-									});
-								}
-							}
-						</script>
-
-						<article class="thumb" >
-							<a onclick="showPanorama('images/thumbs/01.png')" class="image"><img src="images/thumbs/01.png" alt="" /></a>
+						<article class="thumb">
+							<a href="images/thumbs/01.png" class="image"><img src="images/thumbs/01.png" alt="" /></a>
 							<h2>Resto and Bar</h2>
 							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
 						</article>
-						<article class="thumb" onclick="showPanorama('images/thumbs/02.jpg')">
-							<a href="#" class="image"><img src="images/thumbs/02.jpg" alt="" /></a>
+						<article class="thumb">
+							<a href="images/thumbs/02.jpg" class="image"><img src="images/thumbs/02.jpg" alt="" /></a>
 							<h2>Rumah</h2>
 							<p>Panorama rumah dari Google.</p>
 						</article>
-						<article class="thumb" onclick="showPanorama('images/panorama3.jpg')">
-							<a href="#" class="image"><img src="images/thumbs/03.jpg" alt="" /></a>
+						<article class="thumb">
+							<a href="images/fulls/03.jpg" class="image"><img src="images/thumbs/03.jpg" alt="" /></a>
 							<h2>Tempus aliquam veroeros</h2>
 							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
 						</article>
-						<article class="thumb" onclick="showPanorama('images/panorama4.jpg')">
-							<a href="#" class="image"><img src="images/thumbs/04.jpg" alt="" /></a>
+						<article class="thumb">
+							<a href="images/fulls/04.jpg" class="image"><img src="images/thumbs/04.jpg" alt="" /></a>
 							<h2>Aliquam ipsum sed dolore</h2>
 							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
 						</article>
-
+						<article class="thumb">
+							<a href="images/fulls/05.jpg" class="image"><img src="images/thumbs/05.jpg" alt="" /></a>
+							<h2>Cursis aliquam nisl</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/06.jpg" class="image"><img src="images/thumbs/06.jpg" alt="" /></a>
+							<h2>Sed consequat phasellus</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/07.jpg" class="image"><img src="images/thumbs/07.jpg" alt="" /></a>
+							<h2>Mauris id tellus arcu</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/08.jpg" class="image"><img src="images/thumbs/08.jpg" alt="" /></a>
+							<h2>Nunc vehicula id nulla</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/09.jpg" class="image"><img src="images/thumbs/09.jpg" alt="" /></a>
+							<h2>Neque et faucibus viverra</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/10.jpg" class="image"><img src="images/thumbs/10.jpg" alt="" /></a>
+							<h2>Mattis ante fermentum</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/11.jpg" class="image"><img src="images/thumbs/11.jpg" alt="" /></a>
+							<h2>Sed ac elementum arcu</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
+						<article class="thumb">
+							<a href="images/fulls/12.jpg" class="image"><img src="images/thumbs/12.jpg" alt="" /></a>
+							<h2>Vehicula id nulla dignissim</h2>
+							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
+						</article>
 					</div>
-
-				<!-- Footer -->
-					<footer id="footer" class="panel">
-							<section>
-								<h2>RTA Studio</h2>
-								<p>RTA Sudio adalah layanan desain arsitektur milik Reza Tri Andiansyah.</p>
-							</section>
-							<p class="copyright">
-								&copy; RTA Studio. Powered by <a href="https://owudev.com">Owudev</a>.
-							</p>
-					</footer>
-
 			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>
