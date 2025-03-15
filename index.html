@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
 
     <style>
-        #panorama {
+        .panorama-container {
             width: 100%;
             height: 500px;
             margin-top: 20px;
@@ -37,9 +37,21 @@
         <!-- Main -->
         <div id="main">
             <article class="thumb">
-                <h2>Rumah (Panorama 360°)</h2>
-                <p>Panorama rumah dari Google.</p>
-                <div id="panorama"></div>
+                <h2>Rumah</h2>
+                <p>Panorama rumah.</p>
+                <div id="panorama1" class="panorama-container"></div>
+            </article>
+
+            <article class="thumb">
+                <h2>Resto & Bar</h2>
+                <p>Panorama resto dan bar.</p>
+                <div id="panorama2" class="panorama-container"></div>
+            </article>
+
+            <article class="thumb">
+                <h2>Villa</h2>
+                <p>Panorama villa di pegunungan.</p>
+                <div id="panorama3" class="panorama-container"></div>
             </article>
         </div>
 
@@ -63,14 +75,22 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- Inisialisasi Pannellum setelah DOM selesai dimuat -->
+    <!-- Inisialisasi Pannellum untuk Banyak Artikel -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        pannellum.viewer('panorama', {
-            "type": "equirectangular",
-            "panorama": "images/thumbs/02.jpg",
-            "autoLoad": true,
-            "showZoomCtrl": true
+        const panoramas = [
+            { id: "panorama1", image: "images/thumbs/02.jpg" },
+            { id: "panorama2", image: "images/thumbs/01.png" },
+            { id: "panorama3", image: "images/panorama-villa.jpg" }
+        ];
+
+        panoramas.forEach(pano => {
+            pannellum.viewer(pano.id, {
+                "type": "equirectangular",
+                "panorama": pano.image,
+                "autoLoad": true,
+                "showZoomCtrl": true
+            });
         });
     });
     </script>
