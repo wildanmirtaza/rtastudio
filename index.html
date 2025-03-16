@@ -156,15 +156,10 @@
                 fullscreenBtn.style.border = "none";
                 fullscreenBtn.style.padding = "5px 10px";
                 fullscreenBtn.style.cursor = "pointer";
+                fullscreenBtn.style.zIndex = "10";
         
                 fullscreenBtn.addEventListener("click", function () {
-                    if (viewer.isFullscreen()) {
-                        viewer.exitFullscreen();
-                        viewer.setMouseZoom(false); // NONAKTIFKAN ZOOM SAAT KELUAR FULLSCREEN
-                    } else {
-                        viewer.enterFullscreen();
-                        viewer.setMouseZoom(true); // AKTIFKAN ZOOM SAAT FULLSCREEN
-                    }
+                    viewer.toggleFullscreen();
                 });
         
                 container.style.position = "relative";
@@ -172,6 +167,6 @@
             });
         });
         </script>
-        
+                
 </body>
 </html>
