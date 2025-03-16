@@ -141,32 +141,24 @@
                     "panorama": pano.image,
                     "autoLoad": true,
                     "showZoomCtrl": true,
-                    "mouseZoom": false // NONAKTIFKAN ZOOM DI MODE NORMAL
+                    "mouseZoom": false // Default: Nonaktifkan zoom
                 });
         
-                // Tambahkan tombol Fullscreen
-                const container = document.getElementById(pano.id);
-                const fullscreenBtn = document.createElement("button");
-                fullscreenBtn.innerText = "Fullscreen";
-                fullscreenBtn.style.position = "absolute";
-                fullscreenBtn.style.bottom = "10px";
-                fullscreenBtn.style.left = "10px";
-                fullscreenBtn.style.background = "rgba(0,0,0,0.5)";
-                fullscreenBtn.style.color = "white";
-                fullscreenBtn.style.border = "none";
-                fullscreenBtn.style.padding = "5px 10px";
-                fullscreenBtn.style.cursor = "pointer";
-                fullscreenBtn.style.zIndex = "10";
+                // Fungsi untuk menangani perubahan fullscreen
+                function toggleMouseZoom() {
+                    if (document.fullscreenElement || document.webkitFullscreenElement) {
+                        viewer.setOption("mouseZoom", true); // Aktifkan zoom saat fullscreen
+                    } else {
+                        viewer.setOption("mouseZoom", false); // Nonaktifkan zoom saat keluar fullscreen
+                    }
+                }
         
-                fullscreenBtn.addEventListener("click", function () {
-                    viewer.toggleFullscreen();
-                });
-        
-                container.style.position = "relative";
-                container.appendChild(fullscreenBtn);
+                // Event listener untuk fullscreen
+                document.addEventListener("fullscreenchange", toggleMouseZoom);
+                document.addEventListener("webkitfullscreenchange", toggleMouseZoom);
             });
         });
         </script>
-                
+                        
 </body>
 </html>
