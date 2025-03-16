@@ -137,30 +137,34 @@
         
             let viewers = {}; // Simpan semua instance viewer
         
-            panoramas.forEach(pano => {
-                const viewer = pannellum.viewer(pano.id, {
+            // Fungsi untuk membuat ulang viewer
+            function createViewer(pano, enableZoom) {
+                if (viewers[pano.id]) {
+                    viewers[pano.id].destroy(); // Hapus viewer lama
+                }
+                
+                viewers[pano.id] = pannellum.viewer(pano.id, {
                     "type": "equirectangular",
                     "panorama": pano.image,
                     "autoLoad": true,
                     "showZoomCtrl": true,
-                    "mouseZoom": false // Zoom dinonaktifkan saat awal
+                    "mouseZoom": enableZoom // Aktifkan atau nonaktifkan zoom
                 });
+            }
         
-                viewers[pano.id] = viewer;
-            });
+            // Inisialisasi pertama dengan zoom mati
+            panoramas.forEach(pano => createViewer(pano, false));
         
             // Event listener untuk menangkap fullscreen change
             document.addEventListener("fullscreenchange", function() {
                 let isFullscreen = !!document.fullscreenElement; // Cek apakah fullscreen aktif
-        
-                Object.values(viewers).forEach(viewer => {
-                    viewer.setConfig({ mouseZoom: isFullscreen }); // Aktifkan zoom jika fullscreen
-                });
+                
+                panoramas.forEach(pano => createViewer(pano, isFullscreen));
         
                 console.log("Fullscreen aktif:", isFullscreen);
             });
         });
         </script>
-                                                        
+                                                                
 </body>
 </html>
