@@ -135,6 +135,8 @@
                 { id: "panorama12", image: "images/thumbs/01.png" },
             ];
         
+            let viewers = {}; // Simpan instance viewer
+        
             panoramas.forEach(pano => {
                 const viewer = pannellum.viewer(pano.id, {
                     "type": "equirectangular",
@@ -144,17 +146,21 @@
                     "mouseZoom": false // Nonaktifkan zoom awal
                 });
         
-                // Event listener saat masuk/keluar fullscreen
-                viewer.on("fullscreenchange", function() {
-                    setTimeout(() => {
-                        const isFullscreen = viewer.getConfig().fullscreen;
-                        console.log("Fullscreen status:", isFullscreen); // Debugging
-                        viewer.setOption("mouseZoom", isFullscreen); // Aktifkan zoom hanya jika fullscreen
-                    }, 300); // Delay kecil agar perubahan diterapkan dengan benar
+                viewers[pano.id] = viewer;
+            });
+        
+            // Tambahkan event listener ke dokumen
+            document.addEventListener("fullscreenchange", function() {
+                let isFullscreen = !!document.fullscreenElement; // Cek apakah fullscreen aktif
+        
+                Object.values(viewers).forEach(viewer => {
+                    viewer.setMouseZoom(isFullscreen); // Aktifkan zoom hanya jika fullscreen
                 });
+        
+                console.log("Fullscreen aktif:", isFullscreen);
             });
         });
         </script>
-                                        
+                                                
 </body>
 </html>
