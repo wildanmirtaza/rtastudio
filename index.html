@@ -141,26 +141,20 @@
                     "panorama": pano.image,
                     "autoLoad": true,
                     "showZoomCtrl": true,
-                    "mouseZoom": false // Nonaktifkan zoom saat awal
+                    "mouseZoom": false // Nonaktifkan zoom awal
                 });
         
                 // Event listener saat masuk/keluar fullscreen
-                function toggleMouseZoom() {
+                viewer.on("fullscreenchange", function() {
                     setTimeout(() => {
-                        const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
-                        viewer.setOption("mouseZoom", isFullscreen); // Aktifkan zoom saat fullscreen
-                    }, 500); // Delay agar Pannellum menangani perubahan fullscreen dengan benar
-                }
-        
-                // Tangkap event fullscreen dari dokumen
-                document.addEventListener("fullscreenchange", toggleMouseZoom);
-                document.addEventListener("webkitfullscreenchange", toggleMouseZoom);
-        
-                // Tangkap event fullscreen dari Pannellum (khusus Pannellum)
-                viewer.on("fullscreenchange", toggleMouseZoom);
+                        const isFullscreen = viewer.getConfig().fullscreen;
+                        console.log("Fullscreen status:", isFullscreen); // Debugging
+                        viewer.setOption("mouseZoom", isFullscreen); // Aktifkan zoom hanya jika fullscreen
+                    }, 300); // Delay kecil agar perubahan diterapkan dengan benar
+                });
             });
         });
         </script>
-                                
+                                        
 </body>
 </html>
